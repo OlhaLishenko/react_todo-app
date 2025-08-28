@@ -5,6 +5,7 @@ import { EditContext } from '../../Context/EditContext';
 import { Action } from '../../Enum/Action';
 import { FilterContext } from '../../Context/FilterContext';
 import { Filters, filtersButtons } from '../../Enum/Filters';
+import { NavLink } from 'react-router';
 
 export const Footer = () => {
   const { setEditedTodoList } = useContext(EditContext);
@@ -34,12 +35,12 @@ export const Footer = () => {
 
       <nav className="filter" data-cy="Filter">
         {filtersButtons.map(filterItem => (
-          <a
+          <NavLink
             key={filterItem}
-            href={
+            to={
               filterItem !== 'All'
-                ? `#/${filterItem[0].toLowerCase() + filterItem.slice(1)}`
-                : '#/'
+                ? `/todoApp/${filterItem[0].toLowerCase() + filterItem.slice(1)}`
+                : '/todoApp'
             }
             className={classNames('filter__link', {
               selected: filter === filterItem,
@@ -48,7 +49,7 @@ export const Footer = () => {
             onClick={() => handleFilter(filterItem)}
           >
             {filterItem}
-          </a>
+          </NavLink>
         ))}
       </nav>
 

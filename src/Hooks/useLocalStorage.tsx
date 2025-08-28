@@ -10,7 +10,6 @@ export function useLocalStorage<T>(
   key: string,
   defaultValue: T,
 ): [T, (a: T) => void] {
-  debugger;
   const [value, setValue] = useState(() => {
     return getInitialValue(key, defaultValue);
   });

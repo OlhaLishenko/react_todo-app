@@ -1,10 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useEffect, useState } from 'react';
-import { Loader } from '../Loader/Loader';
-import { Link, NavLink, Outlet } from 'react-router';
-
-export const AppContent: React.FC = () => {
-  const [loader, setLoader] = useState(false);
+export const App = () => {
+const [loader, setLoader] = useState(false);
 
   const titleStyle = {
     fontSize: "24px",
@@ -27,11 +22,15 @@ export const AppContent: React.FC = () => {
 
   return (
     <>
-      {loader ? (
-        <Loader />
-      ) : (
-          <>
-          <NavLink to="todoApp" style={titleStyle}>
+      {loader ? <Loader /> : (
+        <>
+          <NavLink
+            to="/todoApp"
+            style={({isActive}) => ({
+              ...titleStyle,
+              display: isActive ? "none" : "block"
+            })}
+          >
             Todo App
           </NavLink>
         </>

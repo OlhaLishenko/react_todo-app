@@ -2,6 +2,17 @@ iframe {
   display: none;
 }
 
+#root {
+  display: flex;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  display: flex;
+  justify-content: center !important;
+}
+
 body {
   min-width: 230px;
   max-width: 550px;
